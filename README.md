@@ -7,21 +7,21 @@
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=element-web&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=element-web)
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=element-web&metric=bugs)](https://sonarcloud.io/summary/new_code?id=element-web)
 
-# Element
+# OMD Messenger
 
-Element (formerly known as Vector and Riot) is a Matrix web client built using the [Matrix
-JS SDK](https://github.com/matrix-org/matrix-js-sdk).
+OMD Messenger is a secure Matrix web client built using the [Matrix
+JS SDK](https://github.com/matrix-org/matrix-js-sdk) and based on Element Web.
 
 # Supported Environments
 
-Element has several tiers of support for different environments:
+OMD Messenger has several tiers of support for different environments:
 
 - Supported
     - Definition:
         - Issues **actively triaged**, regressions **block** the release
     - Last 2 major versions of Chrome, Firefox, and Edge on desktop OSes
     - Last 2 versions of Safari
-    - Latest release of official Element Desktop app on desktop OSes
+    - Latest release of official OMD Messenger Desktop app on desktop OSes
     - Desktop OSes means macOS, Windows, and Linux versions for desktop devices
       that are actively supported by the OS vendor and receive security updates
 - Best effort

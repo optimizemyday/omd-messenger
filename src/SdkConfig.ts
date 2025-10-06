@@ -17,9 +17,9 @@ import { type DeepReadonly, type Defaultize } from "./@types/common";
 
 // see element-web config.md for docs, or the IConfigOptions interface for dev docs
 export const DEFAULTS: DeepReadonly<IConfigOptions> = {
-    brand: "Element",
-    help_url: "https://element.io/help",
-    help_encryption_url: "https://element.io/help#encryption",
+    brand: "OMD Messenger",
+    help_url: "https://docs.optimizemyday.com/help",
+    help_encryption_url: "https://docs.optimizemyday.com/help#encryption",
     integrations_ui_url: "https://scalar.vector.im/",
     integrations_rest_url: "https://scalar.vector.im/api",
     uisi_autorageshake_app: "element-auto-uisi",
@@ -27,12 +27,12 @@ export const DEFAULTS: DeepReadonly<IConfigOptions> = {
     force_verification: false,
 
     jitsi: {
-        preferred_domain: "meet.element.io",
+        preferred_domain: "meet.optimizemyday.com",
     },
     element_call: {
         use_exclusively: false,
         participant_limit: 8,
-        brand: "Element Call",
+        brand: "OMD Call",
     },
 
     // @ts-ignore - we deliberately use the camelCase version here so we trigger
@@ -55,15 +55,15 @@ export const DEFAULTS: DeepReadonly<IConfigOptions> = {
     desktop_builds: {
         available: true,
         logo: "vector-icons/1024.png",
-        url: "https://element.io/download",
-        url_macos: "https://packages.element.io/desktop/install/macos/Element.dmg",
-        url_win64: "https://packages.element.io/desktop/install/win32/x64/Element%20Setup.exe",
-        url_win64arm: "https://packages.element.io/desktop/install/win32/arm64/Element%20Setup.exe",
-        url_linux: "https://element.io/download#linux",
+        url: "https://optimizemyday.com/download",
+        url_macos: "https://packages.optimizemyday.com/desktop/install/macos/OMD%20Messenger.dmg",
+        url_win64: "https://packages.optimizemyday.com/desktop/install/win32/x64/OMD%20Messenger%20Setup.exe",
+        url_win64arm: "https://packages.optimizemyday.com/desktop/install/win32/arm64/OMD%20Messenger%20Setup.exe",
+        url_linux: "https://optimizemyday.com/download#linux",
     },
     mobile_builds: {
-        ios: "https://apps.apple.com/app/vector/id1083446067",
-        android: "https://play.google.com/store/apps/details?id=im.vector.app",
+        ios: "https://apps.apple.com/app/omd-messenger/id1083446067",
+        android: "https://play.google.com/store/apps/details?id=com.optimizemyday.messenger",
         fdroid: "https://f-droid.org/repository/browse/?fdid=im.vector.app",
     },
 };

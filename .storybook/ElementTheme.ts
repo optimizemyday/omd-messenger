@@ -21,8 +21,8 @@ export default create({
     // Toolbar
     barBg: "#ffffff",
 
-    brandTitle: "Element Web",
-    brandUrl: "https://github.com/element-hq/element-web",
-    brandImage: "https://element.io/images/logo-ele-secondary.svg",
+    brandTitle: "OMD Messenger Web",
+    brandUrl: "https://github.com/your-org/omd-messenger",
+    brandImage: "https://optimizemyday.com/images/omd-logo.svg",
     brandTarget: "_self",
 });

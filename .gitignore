@@ -8,6 +8,9 @@
 /webapp
 /.npmrc
 /*.log
+
+# Generated configuration file (built from config/ directory)
+/config.json
 package-lock.json
 .DS_Store
 electron/dist

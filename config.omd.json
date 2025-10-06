@@ -1,0 +1,65 @@
+{
+    "default_server_config": {
+        "m.homeserver": {
+            "base_url": "https://messenger.optimizemyday.com",
+            "server_name": "optimizemyday.com"
+        }
+    },
+    "disable_custom_urls": false,
+    "disable_guests": false,
+    "disable_login_language_selector": false,
+    "disable_3pid_login": false,
+    "force_verification": false,
+    "brand": "OMD Messenger",
+    "branding": {
+        "welcome_background_url": "img/omd-dus.jpg",
+        "auth_header_logo_url": "themes/omd/img/logos/omd-messenger-logo.svg",
+        "auth_footer_links": [
+            { "text": "OMD Website", "url": "https://optimizemyday.com" },
+            { "text": "Documentation", "url": "https://docs.optimizemyday.com" },
+            { "text": "Support", "url": "https://support.optimizemyday.com" }
+        ]
+    },
+    "integrations_ui_url": "https://scalar.vector.im/",
+    "integrations_rest_url": "https://scalar.vector.im/api",
+    "integrations_widgets_urls": [
+        "https://scalar.vector.im/_matrix/integrations/v1",
+        "https://scalar.vector.im/api"
+    ],
+    "default_widget_container_height": 280,
+    "default_country_code": "US",
+    "show_labs_settings": false,
+    "features": {},
+    "default_federate": true,
+    "default_theme": "light",
+    "room_directory": {
+        "servers": ["optimizemyday.com", "matrix.org"]
+    },
+    "enable_presence_by_hs_url": {
+        "https://messenger.optimizemyday.com": true,
+        "https://matrix.org": false
+    },
+    "setting_defaults": {
+        "breadcrumbs": true
+    },
+    "jitsi": {
+        "preferred_domain": "meet.optimizemyday.com"
+    },
+    "element_call": {
+        "url": "https://call.optimizemyday.com",
+        "participant_limit": 8,
+        "brand": "OMD Call"
+    },
+    "desktop_builds": {
+        "available": true,
+        "logo": "themes/omd/img/logos/omd-app-logo.svg",
+        "url": "https://optimizemyday.com/download"
+    },
+    "mobile_builds": {
+        "ios": "https://apps.apple.com/app/omd-messenger/id1083446067",
+        "android": "https://play.google.com/store/apps/details?id=com.omd.messenger",
+        "fdroid": "https://f-droid.org/repository/browse/?fdid=com.optimizemyday.messenger"
+    },
+    "help_url": "https://docs.optimizemyday.com/help",
+    "help_encryption_url": "https://docs.optimizemyday.com/help#encryption"
+}

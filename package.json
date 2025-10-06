@@ -1,11 +1,11 @@
 {
-    "name": "element-web",
+    "name": "omd-messenger",
     "version": "1.12.0",
-    "description": "Element: the future of secure communication",
+    "description": "OMD Messenger: secure communication for OMD",
     "author": "New Vector Ltd.",
     "repository": {
         "type": "git",
-        "url": "https://github.com/element-hq/element-web"
+        "url": "https://github.com/your-org/omd-messenger"
     },
     "license": "SEE LICENSE IN README.md",
     "files": [
@@ -44,6 +44,9 @@
         "build:bundle": "webpack --progress --mode production",
         "build:bundle-stats": "webpack --progress --mode production --json > webpack-stats.json",
         "build:module_system": "ts-node --project ./tsconfig.module_system.json module_system/scripts/install.ts",
+        "config:omd": "node scripts/build-config.js omd",
+        "config:element": "node scripts/build-config.js element",
+        "config:build": "node scripts/build-config.js",
         "dist": "./scripts/package.sh",
         "start": "concurrently --kill-others-on-fail --prefix \"{time} [{name}]\" -n modules,res \"yarn build:module_system\" \"yarn build:res\" && concurrently --kill-others-on-fail --prefix \"{time} [{name}]\" -n res,element-js \"yarn start:res\" \"yarn start:js\"",
         "start:https": "concurrently --kill-others-on-fail --prefix \"{time} [{name}]\" -n res,element-js \"yarn start:res\" \"yarn start:js --server-type https\"",
