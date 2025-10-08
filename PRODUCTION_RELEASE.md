@@ -2,6 +2,10 @@
 
 This guide covers the complete process for creating a production release of OMD Messenger.
 
+## TL;DR
+
+Start the script `build-docker.sh` to produce a new docker image.
+
 ## Prerequisites
 
 1. **Node.js Version**: Ensure you're using Node.js 20+

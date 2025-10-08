@@ -9,24 +9,55 @@ NAMESPACE="omd-ai"
 VERSION=$(node -p "require('./package.json').version")
 COMMIT_HASH=$(git rev-parse --short HEAD)
 
-echo "🏗️  Building OMD Messenger Docker Image"
+echo "🚀 Building OMD Messenger Docker Image (Simple)"
 echo "   Version: $VERSION"
 echo "   Commit: $COMMIT_HASH"
 echo "   Registry: $REGISTRY/$NAMESPACE/$IMAGE_NAME"
 
-# Switch to Node.js 22
-echo "🔧 Switching to Node.js 22..."
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-nvm use 22
+# Check for uncommitted changes
+if ! git diff --quiet || ! git diff --cached --quiet; then
+  echo "❌ You have uncommitted changes. Please commit them before building."
+  exit 1
+fi
 
-# Ensure we have the OMD configuration built
-echo "📋 Building OMD configuration..."
-yarn config:omd
+# Check if local branch is ahead of remote
+LOCAL_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+UPSTREAM_BRANCH="origin/$LOCAL_BRANCH"
+git fetch origin
 
-# Build the Docker image
+if [ "$(git rev-list --count $UPSTREAM_BRANCH..$LOCAL_BRANCH)" -ne 0 ]; then
+  echo "❌ You have commits that are not pushed to origin. Please push them before building."
+  exit 1
+fi
+
+echo "✅ All changes are committed and pushed."
+
+# Remove existing webapp directory if it exists
+if [ -d "webapp" ]; then
+    echo "🗑️  Removing existing webapp directory..."
+    rm -rf webapp
+fi
+
+nvm use 22 && yarn config:omd && yarn build
+
+# Check if config.json exists in webapp
+if [ ! -f "webapp/config.json" ]; then
+    echo "❌ webapp/config.json not found!"
+    echo "   Please run: yarn config:omd"
+    exit 1
+fi
+
+echo "✅ webapp directory found with config.json"
+
+# Build the Docker image using simple Dockerfile
 echo "🐳 Building Docker image..."
+
+# Temporarily use our custom dockerignore
+cp .dockerignore .dockerignore.backup
+cp .dockerignore.simple .dockerignore
+
 docker build \
+  -f Dockerfile.simple \
   --build-arg BUILDKIT_INLINE_CACHE=1 \
   --tag $IMAGE_NAME:latest \
   --tag $IMAGE_NAME:$VERSION \
@@ -35,6 +66,9 @@ docker build \
   --tag $REGISTRY/$NAMESPACE/$IMAGE_NAME:$VERSION \
   --tag $REGISTRY/$NAMESPACE/$IMAGE_NAME:$COMMIT_HASH \
   .
+
+# Restore original dockerignore
+mv .dockerignore.backup .dockerignore
 
 echo "✅ Docker image built successfully!"
 echo "   Local tags:"
@@ -48,17 +82,21 @@ echo "     - $REGISTRY/$NAMESPACE/$IMAGE_NAME:$COMMIT_HASH"
 
 # Test the image locally
 echo "🧪 Testing the image..."
-docker run --rm -d --name omd-messenger-test -p 8080:80 $IMAGE_NAME:latest
+docker run --rm -d --name omd-messenger-test -p 8081:80 $IMAGE_NAME:latest
 
 # Wait a moment for the container to start
 sleep 3
 
 # Test if the container is responding
-if curl -f http://localhost:8080/config.json >/dev/null 2>&1; then
+if curl -f http://localhost:8081/config.json >/dev/null 2>&1; then
     echo "✅ Container test passed!"
+    echo "   You can test the app at: http://localhost:8081"
+    echo "   Press any key to stop the test container and continue..."
+    read -n 1 -s
 else
     echo "❌ Container test failed!"
     docker logs omd-messenger-test
+    docker stop omd-messenger-test
     exit 1
 fi
 
