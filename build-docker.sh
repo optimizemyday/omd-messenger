@@ -77,6 +77,16 @@ docker buildx build \
   --tag $REGISTRY/$NAMESPACE/$IMAGE_NAME:$COMMIT_HASH \
   .
 
+# Also build a local amd64 version for testing
+echo "🔧 Building local amd64 version for testing..."
+docker buildx build \
+  --platform linux/amd64 \
+  --tag $IMAGE_NAME:latest \
+  --tag $IMAGE_NAME:$VERSION \
+  --tag $IMAGE_NAME:$COMMIT_HASH \
+  --load \
+  .
+
 # Restore original dockerignore
 mv .dockerignore.backup .dockerignore
 
