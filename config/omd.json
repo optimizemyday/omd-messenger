@@ -4,9 +4,9 @@
         "welcome_background_url": "img/omd-dus.jpg",
         "auth_header_logo_url": "themes/omd/img/logos/omd-messenger-logo.svg",
         "auth_footer_links": [
-            { "text": "OMD Website", "url": "https://optimizemyday.com" },
+            { "text": "OMD Website", "url": "https://www.optimizemyday.com" },
             { "text": "Documentation", "url": "https://docs.optimizemyday.com" },
-            { "text": "Support", "url": "https://support.optimizemyday.com" }
+            { "text": "Support", "url": "https://optimizemyday.atlassian.net/servicedesk/customer/portals" }
         ]
     },
     "default_server_config": {

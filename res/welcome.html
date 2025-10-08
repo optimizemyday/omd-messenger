@@ -154,6 +154,30 @@ we don't have an account and should hide them. No account == no guest account ei
         margin: 0 auto;
     }
 
+    .mx_Footer {
+        margin-top: 40px;
+        padding-top: 20px;
+        border-top: 1px solid #e3e8f0;
+        font-size: 12px;
+        color: #737373;
+        text-align: center;
+        max-width: 400px;
+    }
+
+    .mx_Footer a {
+        color: #368bd6;
+        text-decoration: none;
+    }
+
+    .mx_Footer a:hover {
+        text-decoration: underline;
+    }
+
+    .mx_SourceLink {
+        margin-top: 8px;
+        font-weight: 500;
+    }
+
     @media only screen and (max-width: 480px) {
         .mx_ButtonRow {
             flex-direction: column;
@@ -161,6 +185,11 @@ we don't have an account and should hide them. No account == no guest account ei
 
         .mx_ButtonRow > * {
             margin: 0 0 10px 0;
+        }
+
+        .mx_Footer {
+            margin-top: 30px;
+            font-size: 11px;
         }
     }
 </style>
@@ -187,6 +216,16 @@ we don't have an account and should hide them. No account == no guest account ei
                     <div class="mx_ButtonLabel">_t("action|explore_rooms")</div>
                 </a>
             </div>
+        </div>
+    </div>
+    
+    <div class="mx_Footer">
+        <div>OMD Messenger is based on Element Web</div>
+        <div>Original software © New Vector Ltd. Licensed under AGPL-3.0</div>
+        <div class="mx_SourceLink">
+            <a href="https://github.com/optimizemyday/omd-messenger" target="_blank" rel="noopener">
+                View Source Code
+            </a>
         </div>
     </div>
 </div>
