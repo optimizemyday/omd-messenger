@@ -53,15 +53,21 @@ fi
 
 echo "✅ webapp directory found with config.json"
 
-# Build the Docker image using simple Dockerfile
-echo "🐳 Building Docker image..."
+# Build the Docker image using simple Dockerfile for AMD64 platform
+echo "🐳 Building Docker image for AMD64 platform..."
 
 # Temporarily use our custom dockerignore
 cp .dockerignore .dockerignore.backup
 cp .dockerignore.simple .dockerignore
 
-docker build \
+# Create buildx builder if it doesn't exist
+docker buildx create --use --name multiplatform 2>/dev/null || docker buildx use multiplatform
+
+# Build for AMD64 platform (compatible with most Kubernetes clusters)
+# Build locally for testing
+docker buildx build \
   -f Dockerfile.simple \
+  --platform linux/amd64 \
   --build-arg BUILDKIT_INLINE_CACHE=1 \
   --tag $IMAGE_NAME:latest \
   --tag $IMAGE_NAME:$VERSION \
@@ -69,6 +75,7 @@ docker build \
   --tag $REGISTRY/$NAMESPACE/$IMAGE_NAME:latest \
   --tag $REGISTRY/$NAMESPACE/$IMAGE_NAME:$VERSION \
   --tag $REGISTRY/$NAMESPACE/$IMAGE_NAME:$COMMIT_HASH \
+  --load \
   .
 
 # Restore original dockerignore
@@ -108,4 +115,10 @@ fi
 docker stop omd-messenger-test
 
 echo "🎉 Build completed successfully!"
-echo "To push to registry, run: ./push-docker.sh"
+echo ""
+echo "🎯 Local images built:"
+echo "   📦 $IMAGE_NAME:latest"
+echo "   📦 $IMAGE_NAME:$VERSION"
+echo "   📦 $IMAGE_NAME:$COMMIT_HASH"
+echo ""
+echo "🚀 To push to registry after testing, run: ./push-docker.sh"

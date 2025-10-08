@@ -28,17 +28,29 @@ echo "🔐 Logging into Docker registry..."
 echo "Please enter your Docker registry password:"
 docker login $REGISTRY --username $USERNAME
 
-# Push all tags
-echo "📤 Pushing images to registry..."
+# Build and push AMD64 images to registry
+echo "📤 Building and pushing AMD64 images to registry..."
 
-echo "  → Pushing latest tag..."
-docker push $REGISTRY/$NAMESPACE/$IMAGE_NAME:latest
+# Temporarily use our custom dockerignore
+cp .dockerignore .dockerignore.backup
+cp .dockerignore.simple .dockerignore
 
-echo "  → Pushing version tag ($VERSION)..."
-docker push $REGISTRY/$NAMESPACE/$IMAGE_NAME:$VERSION
+# Create buildx builder if it doesn't exist
+docker buildx create --use --name multiplatform 2>/dev/null || docker buildx use multiplatform
 
-echo "  → Pushing commit tag ($COMMIT_HASH)..."
-docker push $REGISTRY/$NAMESPACE/$IMAGE_NAME:$COMMIT_HASH
+# Build and push for AMD64 platform
+docker buildx build \
+  -f Dockerfile.simple \
+  --platform linux/amd64 \
+  --build-arg BUILDKIT_INLINE_CACHE=1 \
+  --tag $REGISTRY/$NAMESPACE/$IMAGE_NAME:latest \
+  --tag $REGISTRY/$NAMESPACE/$IMAGE_NAME:$VERSION \
+  --tag $REGISTRY/$NAMESPACE/$IMAGE_NAME:$COMMIT_HASH \
+  --push \
+  .
+
+# Restore original dockerignore
+mv .dockerignore.backup .dockerignore
 
 echo "✅ Successfully pushed all images to registry!"
 echo ""
