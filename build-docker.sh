@@ -65,9 +65,9 @@ docker buildx create --use --name multiplatform 2>/dev/null || docker buildx use
 
 # Build for AMD64 platform (compatible with most Kubernetes clusters)
 # Build locally for testing
+# Build for multiple platforms (but don't load locally due to multi-platform limitation)
 docker buildx build \
-  -f Dockerfile.simple \
-  --platform linux/amd64 \
+  --platform linux/amd64,linux/arm64 \
   --build-arg BUILDKIT_INLINE_CACHE=1 \
   --tag $IMAGE_NAME:latest \
   --tag $IMAGE_NAME:$VERSION \
@@ -75,6 +75,15 @@ docker buildx build \
   --tag $REGISTRY/$NAMESPACE/$IMAGE_NAME:latest \
   --tag $REGISTRY/$NAMESPACE/$IMAGE_NAME:$VERSION \
   --tag $REGISTRY/$NAMESPACE/$IMAGE_NAME:$COMMIT_HASH \
+  .
+
+# Also build a local amd64 version for testing
+echo "🔧 Building local amd64 version for testing..."
+docker buildx build \
+  --platform linux/amd64 \
+  --tag $IMAGE_NAME:latest \
+  --tag $IMAGE_NAME:$VERSION \
+  --tag $IMAGE_NAME:$COMMIT_HASH \
   --load \
   .
 
