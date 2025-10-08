@@ -78,9 +78,6 @@ docker buildx build \
   --load \
   .
 
-# Restore original dockerignore
-mv .dockerignore.backup .dockerignore
-
 echo "✅ Docker image built successfully!"
 echo "   Local tags:"
 echo "     - $IMAGE_NAME:latest"
