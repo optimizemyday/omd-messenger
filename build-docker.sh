@@ -67,7 +67,7 @@ docker buildx create --use --name multiplatform 2>/dev/null || docker buildx use
 # Build locally for testing
 # Build for multiple platforms (but don't load locally due to multi-platform limitation)
 docker buildx build \
-  --platform linux/amd64,linux/arm64 \
+  --platform linux/amd64 \
   --build-arg BUILDKIT_INLINE_CACHE=1 \
   --tag $IMAGE_NAME:latest \
   --tag $IMAGE_NAME:$VERSION \
