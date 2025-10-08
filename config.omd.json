@@ -17,7 +17,7 @@
         "auth_footer_links": [
             { "text": "OMD Website", "url": "https://optimizemyday.com" },
             { "text": "Documentation", "url": "https://docs.optimizemyday.com" },
-            { "text": "Support", "url": "https://support.optimizemyday.com" }
+            { "text": "Support", "url": "https://optimizemyday.atlassian.net/servicedesk/customer/portals" }
         ]
     },
     "integrations_ui_url": "https://scalar.vector.im/",
@@ -60,6 +60,6 @@
         "android": "https://play.google.com/store/apps/details?id=com.omd.messenger",
         "fdroid": "https://f-droid.org/repository/browse/?fdid=com.optimizemyday.messenger"
     },
-    "help_url": "https://docs.optimizemyday.com/help",
+    "help_url": "https://docs.optimizemyday.com/",
     "help_encryption_url": "https://docs.optimizemyday.com/help#encryption"
 }

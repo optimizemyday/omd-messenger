@@ -22,7 +22,7 @@ export default create({
     barBg: "#ffffff",
 
     brandTitle: "OMD Messenger Web",
-    brandUrl: "https://github.com/your-org/omd-messenger",
-    brandImage: "https://optimizemyday.com/images/omd-logo.svg",
+    brandUrl: "https://github.com/optimizemyday/omd-messenger",
+    brandImage: "https://www.optimizemyday.com/hubfs/Logo_portrait_claim.svg",
     brandTarget: "_self",
 });

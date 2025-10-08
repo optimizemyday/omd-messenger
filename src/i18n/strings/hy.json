@@ -4014,7 +4014,7 @@
         "you_are_presenting": "Դուք ներկայացնում եք"
     },
     "web_default_device_name": "%(appName)s: %(browserName)s %(osName)s-ի վրա",
-    "welcome_to_element": "Բարի գալուստ Element",
+    "welcome_to_element": "Բարի գալուստ OMD Messenger",
     "widget": {
         "added_by": "Վիջեթը ավելացվել է",
         "capabilities_dialog": {
