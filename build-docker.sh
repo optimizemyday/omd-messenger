@@ -38,6 +38,10 @@ if [ -d "webapp" ]; then
     rm -rf webapp
 fi
 
+
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
 nvm use 22 && yarn config:omd && yarn build
 
 # Check if config.json exists in webapp
