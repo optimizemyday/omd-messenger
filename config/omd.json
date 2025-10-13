@@ -11,18 +11,18 @@
     },
     "default_server_config": {
         "m.homeserver": {
-            "base_url": "https://messenger.optimizemyday.com",
-            "server_name": "optimizemyday.com"
+            "base_url": "https://matrix.optimizemyday.ai",
+            "server_name": "optimizemyday.ai"
         }
     },
     "room_directory": {
-        "servers": ["optimizemyday.com", "matrix.org"]
+        "servers": ["optimizemyday.ai"]
     },
     "enable_presence_by_hs_url": {
-        "https://messenger.optimizemyday.com": true,
+        "https://matrix.optimizemyday.ai": true,
         "https://matrix.org": false
     },
-    "jitsi": {
+        "jitsi": {
         "preferred_domain": "meet.optimizemyday.com"
     },
     "element_call": {
