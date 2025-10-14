@@ -27,6 +27,7 @@ import { privateShouldBeEncrypted } from "../../../utils/rooms";
 import SettingsStore from "../../../settings/SettingsStore";
 import LabelledCheckbox from "../elements/LabelledCheckbox";
 import { UIFeature } from "../../../settings/UIFeature";
+import { shouldForceDisableEncryption } from "../../../utils/crypto/shouldForceDisableEncryption";
 
 interface IProps {
     type?: RoomType;
@@ -346,7 +347,8 @@ export default class CreateRoomDialog extends React.Component<IProps, IState> {
         }
 
         let e2eeSection: JSX.Element | undefined;
-        if (this.state.joinRule !== JoinRule.Public) {
+        // Don't show encryption options if encryption is force-disabled for this homeserver
+        if (this.state.joinRule !== JoinRule.Public && !shouldForceDisableEncryption(MatrixClientPeg.safeGet())) {
             let microcopy: string;
             if (privateShouldBeEncrypted(MatrixClientPeg.safeGet())) {
                 if (this.state.canChangeEncryption) {

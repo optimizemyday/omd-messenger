@@ -5,6 +5,9 @@
             "server_name": "optimizemyday.ai"
         }
     },
+    "io.element.e2ee": {
+        "force_disable": true
+    },
     "disable_custom_urls": false,
     "disable_guests": false,
     "disable_login_language_selector": false,
@@ -29,7 +32,9 @@
     "default_widget_container_height": 280,
     "default_country_code": "US",
     "show_labs_settings": false,
-    "features": {},
+    "features": {
+        "feature_advanced_encryption": "disable"
+    },
     "default_federate": true,
     "default_theme": "light",
     "room_directory": {
@@ -40,7 +45,8 @@
         "https://matrix.org": false
     },
     "setting_defaults": {
-        "breadcrumbs": true
+        "breadcrumbs": true,
+        "UIFeature.advancedEncryption": false
     },
     "jitsi": {
         "preferred_domain": "meet.optimizemyday.com"

@@ -46,6 +46,7 @@ import { UIFeature } from "./settings/UIFeature";
 import { isBulkUnverifiedDeviceReminderSnoozed } from "./utils/device/snoozeBulkUnverifiedDeviceReminder";
 import { getUserDeviceIds } from "./utils/crypto/deviceInfo";
 import { asyncSomeParallel } from "./utils/arrays.ts";
+import { shouldForceDisableEncryption } from "./utils/crypto/shouldForceDisableEncryption";
 
 const KEY_BACKUP_POLL_INTERVAL = 5 * 60 * 1000;
 
@@ -290,6 +291,11 @@ export default class DeviceListener {
     }
 
     private async shouldShowSetupEncryptionToast(): Promise<boolean> {
+        // If encryption is force-disabled for this homeserver, never show setup toasts
+        if (this.client && shouldForceDisableEncryption(this.client)) {
+            return false;
+        }
+
         // If we're in the middle of a secret storage operation, we're likely
         // modifying the state involved here, so don't add new toasts to setup.
         if (isSecretStorageBeingAccessed()) return false;
@@ -313,6 +319,13 @@ export default class DeviceListener {
 
     private async doRecheck(): Promise<void> {
         if (!this.running || !this.client) return; // we have been stopped
+        
+        // If encryption is force-disabled, hide all encryption toasts and exit early
+        if (shouldForceDisableEncryption(this.client)) {
+            hideSetupEncryptionToast();
+            return;
+        }
+
         const logSpan = new LogSpan(logger, "check_" + secureRandomString(4));
         logSpan.debug("starting recheck...");
 

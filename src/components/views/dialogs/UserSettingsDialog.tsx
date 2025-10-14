@@ -48,6 +48,7 @@ import { useSettingValue } from "../../../hooks/useSettings";
 import { NoChange, useEventEmitterAsyncState, type AsyncStateCallbackResult } from "../../../hooks/useEventEmitter";
 import { ToastContext, useActiveToast } from "../../../contexts/ToastContext";
 import { EncryptionUserSettingsTab, type State } from "../settings/tabs/user/EncryptionUserSettingsTab";
+import { shouldForceDisableEncryption } from "../../../utils/crypto/shouldForceDisableEncryption";
 
 interface IProps {
     initialTabId?: UserTab;
@@ -211,16 +212,20 @@ export default function UserSettingsDialog(props: IProps): JSX.Element {
             ),
         );
 
-        tabs.push(
-            new Tab(
-                UserTab.Encryption,
-                _td("settings|encryption|title"),
-                <KeyIcon />,
-                <EncryptionUserSettingsTab initialState={initialEncryptionState} />,
-                "UserSettingsEncryption",
-                showSetupRecoveryIndicator ? "mx_SettingsDialog_tabLabelsAlert" : undefined,
-            ),
-        );
+        // Only show Encryption tab if not force-disabled for this homeserver
+        const shouldShowEncryptionTab = props.sdkContext.client ? !shouldForceDisableEncryption(props.sdkContext.client) : true;
+        if (shouldShowEncryptionTab) {
+            tabs.push(
+                new Tab(
+                    UserTab.Encryption,
+                    _td("settings|encryption|title"),
+                    <KeyIcon />,
+                    <EncryptionUserSettingsTab initialState={initialEncryptionState} />,
+                    "UserSettingsEncryption",
+                    showSetupRecoveryIndicator ? "mx_SettingsDialog_tabLabelsAlert" : undefined,
+                ),
+            );
+        }
 
         if (showLabsFlags() || SettingsStore.getFeatureSettingNames().some((k) => SettingsStore.getBetaInfo(k))) {
             tabs.push(

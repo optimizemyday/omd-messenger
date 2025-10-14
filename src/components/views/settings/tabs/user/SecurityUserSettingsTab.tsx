@@ -32,6 +32,7 @@ import { SettingsSubsection, SettingsSubsectionText } from "../../shared/Setting
 import { useOwnDevices } from "../../devices/useOwnDevices";
 import { DiscoverySettings } from "../../discovery/DiscoverySettings";
 import SetIntegrationManager from "../../SetIntegrationManager";
+import { shouldForceDisableEncryption } from "../../../../../utils/crypto/shouldForceDisableEncryption";
 
 interface IIgnoredUserProps {
     userId: string;
@@ -302,7 +303,8 @@ export default class SecurityUserSettingsTab extends React.Component<IProps, ISt
         );
 
         let warning;
-        if (!privateShouldBeEncrypted(MatrixClientPeg.safeGet())) {
+        // Only show the E2EE warning if encryption is not force-disabled for this homeserver
+        if (!privateShouldBeEncrypted(MatrixClientPeg.safeGet()) && !shouldForceDisableEncryption(MatrixClientPeg.safeGet())) {
             warning = (
                 <div className="mx_SecurityUserSettingsTab_warning">
                     {_t("settings|security|e2ee_default_disabled_warning")}

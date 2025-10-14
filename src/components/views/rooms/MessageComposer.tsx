@@ -362,21 +362,13 @@ export class MessageComposer extends React.Component<IProps, IState> {
     private renderPlaceholderText = (): string => {
         if (this.props.replyToEvent) {
             const replyingToThread = this.props.relation?.rel_type === THREAD_RELATION_TYPE.name;
-            if (replyingToThread && this.props.e2eStatus) {
+            if (replyingToThread) {
                 return _t("composer|placeholder_thread_encrypted");
-            } else if (replyingToThread) {
-                return _t("composer|placeholder_thread");
-            } else if (this.props.e2eStatus) {
-                return _t("composer|placeholder_reply_encrypted");
             } else {
-                return _t("composer|placeholder_reply");
+                return _t("composer|placeholder_reply_encrypted");
             }
         } else {
-            if (this.props.e2eStatus) {
-                return _t("composer|placeholder_encrypted");
-            } else {
-                return _t("composer|placeholder");
-            }
+            return _t("composer|placeholder_encrypted");
         }
     };
 
