@@ -1,0 +1,133 @@
+/*
+OMD Messenger Dark Theme
+Copyright 2024 Optimize My Day
+SPDX-License-Identifier: AGPL-3.0-only OR GPL-3.0-only OR LicenseRef-Element-Commercial
+*/
+
+/* OMD Color Palette */
+:root {
+    /* Primary Colors - OMD Brand Blues */
+    --omd-dunkelblau: #243672;
+    --omd-mediumblau: #0069B4;
+    
+    /* Secondary Colors */
+    --omd-rot: #951521;
+    --omd-dunkelrot: #8A2A2B;
+    --omd-gruen: #6a9234;
+    --omd-dunkelgruen: #004E32;
+    --omd-gelb: #e1d100;
+    --omd-dunkelgelb: #95C11F;
+    
+    /* Neutral Colors */
+    --omd-grau: #6b7983;
+    --omd-mittelgrau: #C8D1D6;
+    --omd-dunkelgrau: #535D62;
+}
+
+/* Dark Theme Variables */
+:root {
+    /* Primary brand colors */
+    --accent-color: var(--omd-mediumblau);
+    --primary-content: var(--omd-mittelgrau);
+    --secondary-content: #ffffff;
+    --tertiary-content: var(--omd-grau);
+    --system: var(--omd-dunkelblau);
+    --background: var(--omd-dunkelblau);
+    --panels: var(--omd-dunkelgrau);
+    
+    /* Action colors */
+    --links: var(--omd-mediumblau);
+    --alert: var(--omd-dunkelrot);
+    
+    /* Room list and sidebar */
+    --sidebar-color: var(--omd-dunkelblau);
+    --roomlist-background-color: var(--omd-dunkelgrau);
+    --roomlist-highlights-color: var(--omd-mediumblau);
+    
+    /* Timeline */
+    --timeline-background-color: var(--omd-dunkelblau);
+    --timeline-text-color: var(--omd-mittelgrau);
+    --timeline-text-secondary-color: #ffffff;
+    
+    /* Compound Design System tokens */
+    --cpd-color-bg-canvas-default: var(--omd-dunkelblau);
+    --cpd-color-bg-surface-primary: var(--omd-dunkelgrau);
+    --cpd-color-bg-surface-secondary: var(--omd-grau);
+    --cpd-color-text-primary: var(--omd-mittelgrau);
+    --cpd-color-text-secondary: #ffffff;
+    --cpd-color-text-action-primary: var(--omd-mediumblau);
+    --cpd-color-border-interactive: var(--omd-mediumblau);
+    --cpd-color-bg-action-primary-rest: var(--omd-mediumblau);
+    --cpd-color-bg-action-primary-hovered: var(--omd-mittelgrau);
+    --cpd-color-bg-action-primary-pressed: #ffffff;
+    --cpd-color-bg-critical-primary: var(--omd-dunkelrot);
+    --cpd-color-bg-success-primary: var(--omd-dunkelgruen);
+    --cpd-color-icon-primary: var(--omd-mittelgrau);
+    --cpd-color-icon-secondary: #ffffff;
+    --cpd-color-icon-accent-tertiary: var(--omd-mediumblau);
+    
+    /* Status colors */
+    --cpd-color-text-success-primary: var(--omd-dunkelgelb);
+    --cpd-color-text-critical-primary: var(--omd-dunkelrot);
+    --cpd-color-text-caution-primary: var(--omd-gelb);
+    
+    /* Toggle and form controls */
+    --togglesw-off-color: var(--omd-grau);
+    --togglesw-on-color: var(--omd-mediumblau);
+    --togglesw-ball-color: #ffffff;
+    
+    /* Buttons */
+    --button-primary-bg-color: var(--omd-mediumblau);
+    --button-primary-fg-color: #ffffff;
+    --button-secondary-bg-color: var(--omd-grau);
+    --button-secondary-fg-color: #ffffff;
+    
+    /* Message composer */
+    --composer-border-color: var(--omd-grau);
+    --composer-bg-color: var(--omd-dunkelgrau);
+    
+    /* Menu and modal backgrounds */
+    --menu-bg-color: var(--omd-dunkelgrau);
+    --menu-selected-color: var(--omd-grau);
+    
+    /* Header panel */
+    --header-panel-bg-color: var(--omd-dunkelgrau);
+    --header-panel-text-primary-color: var(--omd-mittelgrau);
+    
+    /* Scrollbar styling */
+    --scrollbar-thumb-color: var(--omd-grau);
+    --scrollbar-track-color: var(--omd-dunkelgrau);
+}
+
+/* Dark theme specific styling */
+.mx_AppTile_persistedWrapper,
+.mx_SpacePanel {
+    --cpd-color-bg-canvas-default: var(--omd-dunkelblau);
+}
+
+/* Room list styling */
+.mx_RoomList {
+    background-color: var(--roomlist-background-color);
+}
+
+/* Room tile hover states */
+.mx_RoomTile:hover {
+    background-color: rgba(0, 105, 180, 0.2); /* omd-mediumblau with opacity */
+}
+
+/* Active room tile */
+.mx_RoomTile_selected {
+    background-color: var(--omd-mediumblau);
+    color: #ffffff;
+}
+
+/* Message bubbles */
+.mx_EventTile_content .mx_MTextBody {
+    color: var(--timeline-text-color);
+}
+
+/* Accent elements */
+.mx_AccessibleButton_kind_primary {
+    background-color: var(--omd-mediumblau) !important;
+    color: #ffffff !important;
+}
