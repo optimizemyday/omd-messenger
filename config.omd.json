@@ -67,5 +67,93 @@
         "fdroid": "https://f-droid.org/repository/browse/?fdid=com.optimizemyday.messenger"
     },
     "help_url": "https://docs.optimizemyday.com/",
-    "help_encryption_url": "https://docs.optimizemyday.com/help#encryption"
+    "help_encryption_url": "https://docs.optimizemyday.com/help#encryption",
+    "custom_themes": [
+        {
+            "name": "omd",
+            "is_dark": false,
+            "colors": {
+                "primary": "#243672",
+                "primary-content": "#ffffff",
+                "secondary": "#0069B4",
+                "secondary-content": "#ffffff",
+                "accent": "#6a9234",
+                "accent-content": "#ffffff",
+                "neutral": "#6b7983",
+                "neutral-content": "#ffffff",
+                "base-100": "#ffffff",
+                "base-200": "#C8D1D6",
+                "base-300": "#535D62",
+                "base-content": "#243672",
+                "info": "#0069B4",
+                "info-content": "#ffffff",
+                "success": "#6a9234",
+                "success-content": "#ffffff",
+                "warning": "#e1d100",
+                "warning-content": "#243672",
+                "error": "#951521",
+                "error-content": "#ffffff"
+            },
+            "compound_colors": {
+                "cpd-color-bg-canvas-default": "#ffffff",
+                "cpd-color-bg-surface-primary": "#C8D1D6",
+                "cpd-color-bg-surface-secondary": "#ffffff",
+                "cpd-color-text-primary": "#243672",
+                "cpd-color-text-secondary": "#535D62",
+                "cpd-color-text-action-primary": "#0069B4",
+                "cpd-color-border-interactive": "#0069B4",
+                "cpd-color-bg-action-primary-rest": "#0069B4",
+                "cpd-color-bg-action-primary-hovered": "#243672",
+                "cpd-color-bg-action-primary-pressed": "#243672",
+                "cpd-color-bg-critical-primary": "#951521",
+                "cpd-color-bg-success-primary": "#6a9234",
+                "cpd-color-icon-primary": "#243672",
+                "cpd-color-icon-secondary": "#535D62",
+                "cpd-color-icon-accent-tertiary": "#0069B4"
+            }
+        },
+        {
+            "name": "omd-dark", 
+            "is_dark": true,
+            "colors": {
+                "primary": "#0069B4",
+                "primary-content": "#ffffff",
+                "secondary": "#243672",
+                "secondary-content": "#ffffff",
+                "accent": "#95C11F",
+                "accent-content": "#243672",
+                "neutral": "#535D62",
+                "neutral-content": "#C8D1D6",
+                "base-100": "#243672",
+                "base-200": "#535D62",
+                "base-300": "#6b7983",
+                "base-content": "#C8D1D6",
+                "info": "#0069B4",
+                "info-content": "#ffffff",
+                "success": "#004E32",
+                "success-content": "#ffffff",
+                "warning": "#95C11F",
+                "warning-content": "#243672",
+                "error": "#8A2A2B",
+                "error-content": "#ffffff"
+            },
+            "compound_colors": {
+                "cpd-color-bg-canvas-default": "#243672",
+                "cpd-color-bg-surface-primary": "#535D62",
+                "cpd-color-bg-surface-secondary": "#6b7983",
+                "cpd-color-text-primary": "#C8D1D6",
+                "cpd-color-text-secondary": "#ffffff",
+                "cpd-color-text-action-primary": "#0069B4",
+                "cpd-color-border-interactive": "#0069B4",
+                "cpd-color-bg-action-primary-rest": "#0069B4",
+                "cpd-color-bg-action-primary-hovered": "#C8D1D6",
+                "cpd-color-bg-action-primary-pressed": "#ffffff",
+                "cpd-color-bg-critical-primary": "#8A2A2B",
+                "cpd-color-bg-success-primary": "#004E32",
+                "cpd-color-icon-primary": "#C8D1D6",
+                "cpd-color-icon-secondary": "#ffffff",
+                "cpd-color-icon-accent-tertiary": "#0069B4"
+            }
+        }
+    ]
 }
