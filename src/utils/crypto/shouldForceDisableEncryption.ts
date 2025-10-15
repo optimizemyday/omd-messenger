@@ -23,7 +23,7 @@ import { getE2EEWellKnown } from "../WellKnownUtils";
 export function shouldForceDisableEncryption(client: MatrixClient): boolean {
     // Force disable encryption for optimizemyday.ai domain
     const homeserverUrl = client.getHomeserverUrl();
-    if (homeserverUrl.includes('optimizemyday.ai')) {
+    if (homeserverUrl.includes('optimizemyday.ai') || homeserverUrl.includes('localhost')) {
         return true;
     }
 

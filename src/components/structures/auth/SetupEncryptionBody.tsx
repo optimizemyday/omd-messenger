@@ -27,6 +27,7 @@ import { EncryptionCardButtons } from "../../views/settings/encryption/Encryptio
 import { EncryptionCardEmphasisedContent } from "../../views/settings/encryption/EncryptionCardEmphasisedContent";
 import ExternalLink from "../../views/elements/ExternalLink";
 import dispatcher from "../../../dispatcher/dispatcher";
+import { shouldForceDisableEncryption } from "../../../utils/crypto/shouldForceDisableEncryption";
 
 interface IProps {
     onFinished: () => void;
@@ -54,6 +55,23 @@ interface IState {
 export default class SetupEncryptionBody extends React.Component<IProps, IState> {
     public constructor(props: IProps) {
         super(props);
+        
+        // Check if encryption is force-disabled and skip setup if so
+        const client = MatrixClientPeg.safeGet();
+        if (shouldForceDisableEncryption(client)) {
+            // Skip encryption setup entirely and mark as finished
+            this.state = {
+                phase: Phase.Done,
+                verificationRequest: null,
+                backupInfo: null,
+            };
+            // Call onFinished immediately to close the dialog
+            setTimeout(() => {
+                this.props.onFinished();
+            }, 0);
+            return;
+        }
+        
         const store = SetupEncryptionStore.sharedInstance();
         store.start();
         this.state = {
@@ -67,6 +85,12 @@ export default class SetupEncryptionBody extends React.Component<IProps, IState>
     }
 
     public componentDidMount(): void {
+        // Don't set up store listeners if encryption is force-disabled
+        const client = MatrixClientPeg.safeGet();
+        if (shouldForceDisableEncryption(client)) {
+            return;
+        }
+        
         const store = SetupEncryptionStore.sharedInstance();
         store.on("update", this.onStoreUpdate);
     }
