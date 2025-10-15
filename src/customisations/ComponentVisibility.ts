@@ -14,9 +14,26 @@ Please see LICENSE files in the repository root for full details.
 
 import { type ComponentVisibilityCustomisations as IComponentVisibilityCustomisations } from "@element-hq/element-web-module-api";
 
+import { UIComponent } from "../settings/UIFeature";
+import { MatrixClientPeg } from "../MatrixClientPeg";
+
 // A real customisation module will define and export one or more of the
 // customisation points that make up the interface above.
 export const ComponentVisibilityCustomisations: IComponentVisibilityCustomisations = {
-    // while we don't specify the functions here, their defaults are described
-    // in their pseudo-implementations above.
+    shouldShowComponent(component: UIComponent): boolean {
+        // Disable space creation and public room creation for OMD domain
+        const client = MatrixClientPeg.get();
+        if (client) {
+            const homeserverUrl = client.getHomeserverUrl();
+            if (homeserverUrl.includes('optimizemyday.ai') || homeserverUrl.includes('localhost')) {
+                // Disable space creation for OMD domain
+                if (component === UIComponent.CreateSpaces) {
+                    return false;
+                }
+            }
+        }
+        
+        // For all other components, show them by default
+        return true;
+    }
 };

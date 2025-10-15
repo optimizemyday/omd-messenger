@@ -96,7 +96,12 @@ export default class CreateRoomDialog extends React.Component<IProps, IState> {
 
         this.askToJoinEnabled = SettingsStore.getValue("feature_ask_to_join");
         this.advancedSettingsEnabled = SettingsStore.getValue(UIFeature.AdvancedSettings);
-        this.allowCreatingPublicRooms = SettingsStore.getValue(UIFeature.AllowCreatingPublicRooms);
+        
+        // Disable public room creation for OMD domain
+        const client = MatrixClientPeg.safeGet();
+        const homeserverUrl = client.getHomeserverUrl();
+        const isOMDDomain = homeserverUrl.includes('optimizemyday.ai') || homeserverUrl.includes('localhost');
+        this.allowCreatingPublicRooms = isOMDDomain ? false : SettingsStore.getValue(UIFeature.AllowCreatingPublicRooms);
 
         this.supportsRestricted = !!this.props.parentSpace;
         const defaultPublic = this.allowCreatingPublicRooms && this.props.defaultPublic;
