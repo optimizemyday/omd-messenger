@@ -95,9 +95,6 @@ docker run --rm -d --name omd-messenger-test -p 8081:80 $IMAGE_NAME:latest
 # Wait a moment for the container to start
 sleep 3
 
-# Reset .dockerignore
-mv .dockerignore.backup .dockerignore
-
 # Test if the container is responding
 if curl -f http://localhost:8081/config.json >/dev/null 2>&1; then
     echo "✅ Container test passed!"
