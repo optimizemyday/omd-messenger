@@ -27,12 +27,12 @@
         "breadcrumbs": true
     },
     "UIFeature": {
-       "advancedEncryption": false
-    },
-    "UIComponent": {
-        "spaceCreation": false,
-        "exploreRooms": false,
-        "addIntegrations": false
+       "advancedEncryption": false,
+        "UIComponent": {
+            "spaceCreation": false,
+            "exploreRooms": false,
+            "addIntegrations": false
+        }
     },
     "jitsi": {
         "preferred_domain": "meet.optimizemyday.com"
