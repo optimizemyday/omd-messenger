@@ -24,15 +24,11 @@
         "https://matrix.org": false
     },
     "setting_defaults": {
-        "breadcrumbs": true
-    },
-    "UIFeature": {
-       "advancedEncryption": false,
-        "UIComponent": {
-            "spaceCreation": false,
-            "exploreRooms": false,
-            "addIntegrations": false
-        }
+        "breadcrumbs": true,
+        "UIFeature.advancedEncryption": false,
+        "UIComponent.spaceCreation": false,
+        "UIComponent.exploreRooms": false,
+        "UIComponent.addIntegrations": false
     },
     "jitsi": {
         "preferred_domain": "meet.optimizemyday.com"
