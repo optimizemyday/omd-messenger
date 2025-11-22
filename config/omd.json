@@ -9,6 +9,7 @@
             { "text": "Support", "url": "https://optimizemyday.atlassian.net/servicedesk/customer/portals" }
         ]
     },
+    "permalink_prefix": "https://matrix.optimizemyday.ai",
     "default_server_config": {
         "m.homeserver": {
             "base_url": "https://matrix.optimizemyday.ai",
@@ -22,7 +23,14 @@
         "https://matrix.optimizemyday.ai": true,
         "https://matrix.org": false
     },
-        "jitsi": {
+    "setting_defaults": {
+        "breadcrumbs": true,
+        "UIFeature.advancedEncryption": false,
+        "UIComponent.spaceCreation": false,
+        "UIComponent.exploreRooms": false,
+        "UIComponent.addIntegrations": false
+    },
+    "jitsi": {
         "preferred_domain": "meet.optimizemyday.com"
     },
     "element_call": {
