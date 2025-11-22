@@ -9,7 +9,7 @@
             { "text": "Support", "url": "https://optimizemyday.atlassian.net/servicedesk/customer/portals" }
         ]
     },
-    "permalink_prefix": "https://matrix.optimizemyday.ai",
+    "permalink_prefix": "https://messenger.optimizemyday.ai",
     "default_server_config": {
         "m.homeserver": {
             "base_url": "https://matrix.optimizemyday.ai",
